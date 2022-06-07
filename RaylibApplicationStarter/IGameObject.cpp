@@ -10,7 +10,7 @@ void IGameObject::DrawGizmos()
 
 	if (m_drawGizmos)
 	{
-		Ray ray = Ray(position, GetForward(), 10.0f);
+		Ray2D ray = Ray2D(position, GetForward(), 10.0f);
 		Gizmos::DrawRay(ray, BLUE);
 		ray.direction = GetRight();
 		Gizmos::DrawRay(ray, RED);

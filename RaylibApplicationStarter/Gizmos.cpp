@@ -1,5 +1,6 @@
 #include "Gizmos.h"
 
+#include <raylib.h>
 #include <raymath.h>
 
 Vector2 MultiplyVectorByFloat(Vector2 _vector, float _value)
@@ -11,7 +12,7 @@ Vector2 MultiplyVectorByFloat(Vector2 _vector, float _value)
 	return newVector;
 }
 
-void Gizmos::DrawRay(Ray& _ray, Color _color)
+void Gizmos::DrawRay(Ray2D _ray, Color _color)
 {
 	DrawLineEx(_ray.position, Vector2Add(_ray.position, MultiplyVectorByFloat(_ray.direction, _ray.length)), 2.0f, _color);
 }

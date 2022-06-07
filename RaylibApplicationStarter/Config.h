@@ -2,6 +2,7 @@
 
 #define PROGRAM_CATEGORY "Program"
 #define PLAYER_CATEGORY "Player"
+#define DEBUG_CATEGORY "Debug"
 
 #include <string>
 #include <map>

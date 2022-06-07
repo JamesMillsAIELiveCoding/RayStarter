@@ -13,6 +13,7 @@ public:
 	virtual void Start() {}
 	virtual void Update(float _dt) = 0;
 	virtual void Draw() = 0;
+	virtual void DrawGizmos();
 	virtual void OnDestroy() {}
 
 	Vector2 position;
@@ -29,7 +30,7 @@ public:
 protected:
 	IGameObject(Vector2 _position, Vector2 _size, ICollider* _collider) :
 		position(_position), size(_size), color(RAYWHITE), 
-		m_texture(nullptr), m_collider(_collider), rotation(0)
+		m_texture(nullptr), m_collider(_collider), rotation(0), m_drawGizmos(false)
 	{
 	}
 
@@ -43,6 +44,7 @@ protected:
 
 	Texture2D* m_texture;
 	ICollider* m_collider;
+	bool m_drawGizmos;
 
 };
 

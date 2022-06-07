@@ -37,6 +37,12 @@
     <Filter Include="Header Files\GameStates">
       <UniqueIdentifier>{abcdff8f-b897-4b19-9d2a-a1e6f55159b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Debugging">
+      <UniqueIdentifier>{789285ad-c0c6-4ee9-b854-2b0facef6b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Debugging">
+      <UniqueIdentifier>{398ec3d4-cc06-487f-9d88-51262cbf4909}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="IGameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmos.cpp">
+      <Filter>Source Files\Debugging</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,5 +89,16 @@
     <ClInclude Include="IGameState.h">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
+    <ClInclude Include="Gizmos.h">
+      <Filter>Header Files\Debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\config.cfg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

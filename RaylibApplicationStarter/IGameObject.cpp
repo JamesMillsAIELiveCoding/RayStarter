@@ -1,5 +1,22 @@
 #include "IGameObject.h"
 
+#include "Gizmos.h"
+#include "Config.h"
+
+void IGameObject::DrawGizmos()
+{
+	if (IsKeyPressed(KEY_GRAVE))
+		m_drawGizmos = !m_drawGizmos;
+
+	if (m_drawGizmos)
+	{
+		Ray ray = Ray(position, GetForward(), 10.0f);
+		Gizmos::DrawRay(ray, BLUE);
+		ray.direction = GetRight();
+		Gizmos::DrawRay(ray, RED);
+	}
+}
+
 Vector2 IGameObject::GetForward()
 {
 	float radians = rotation * PI / 180;

@@ -2,6 +2,7 @@
 
 #include "Gizmos.h"
 #include "Config.h"
+#include "ICollider.h"
 
 void IGameObject::DrawGizmos()
 {
@@ -10,10 +11,13 @@ void IGameObject::DrawGizmos()
 
 	if (m_drawGizmos)
 	{
-		Ray2D ray = Ray2D(position, GetForward(), 10.0f);
+		Ray2D ray = Ray2D(position, GetForward(), 25.0f);
 		Gizmos::DrawRay(ray, BLUE);
 		ray.direction = GetRight();
 		Gizmos::DrawRay(ray, RED);
+
+		if (m_collider != nullptr)
+			m_collider->DrawGizmos();
 	}
 }
 
@@ -29,9 +33,9 @@ Vector2 IGameObject::GetRight()
 	return Vector2Rotate(forward, 90);
 }
 
-Texture2D* IGameObject::GetTexture() const 
-{ 
-	return m_texture; 
+Texture2D IGameObject::GetTexture() const
+{
+	return m_texture;
 }
 
 ICollider* IGameObject::GetCollider() const

@@ -11,10 +11,12 @@ class IGameObject
 {
 public:
 	virtual void Start() {}
-	virtual void Update(float _dt) = 0;
-	virtual void Draw() = 0;
-	virtual void DrawGizmos();
+	virtual void Update(float _dt) {}
+	virtual void Draw() {}
 	virtual void OnDestroy() {}
+	virtual void OnCollision(IGameObject* _other) {}
+
+	virtual void DrawGizmos();
 
 	Vector2 position;
 	Vector2 size;
@@ -24,25 +26,22 @@ public:
 	Vector2 GetForward();
 	Vector2 GetRight();
 
-	Texture2D* GetTexture() const;
+	Texture2D GetTexture() const;
 	ICollider* GetCollider() const;
-
-protected:
-	IGameObject(Vector2 _position, Vector2 _size, ICollider* _collider) :
-		position(_position), size(_size), color(RAYWHITE), 
-		m_texture(nullptr), m_collider(_collider), rotation(0), m_drawGizmos(false)
-	{
-	}
 
 	virtual ~IGameObject()
 	{
-		if (m_texture != nullptr)
-			delete m_texture;
-
 		delete m_collider;
 	}
 
-	Texture2D* m_texture;
+protected:
+	IGameObject(Vector2 _position, Vector2 _size, ICollider* _collider) :
+		position(_position), size(_size), color(RAYWHITE),
+		m_texture(), m_collider(_collider), rotation(0), m_drawGizmos(false)
+	{
+	}
+
+	Texture2D m_texture;
 	ICollider* m_collider;
 	bool m_drawGizmos;
 

@@ -2,6 +2,8 @@
 
 class Application;
 
+#include "GameObjectCollection.h"
+
 class IGameState
 {
 public:
@@ -12,5 +14,8 @@ public:
 	virtual void OnDestroy() = 0;
 
 	Application* app;
+
+protected:
+	GameObjectCollection m_objects;
 
 };

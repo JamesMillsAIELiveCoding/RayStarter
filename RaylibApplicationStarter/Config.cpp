@@ -23,6 +23,29 @@ int Config::GetIntValue(string _group, string _id)
 	return 0;
 }
 
+bool Config::GetBooleanValue(string _group, string _id)
+{
+	if (m_configData.find(_group) != m_configData.end())
+	{
+		ConfigSet& set = m_configData[_group];
+
+		if (set.find(_id) != set.end())
+		{
+			bool val = false;
+			if (set[_id] == "true")
+				val = true;
+			else if (set[_id] == "false")
+				val = false;
+			else
+				throw InvalidValueException(set[_id]);
+
+			return val;
+		}
+	}
+
+	return false;
+}
+
 float Config::GetFloatValue(string _group, string _id)
 {
 	if (m_configData.find(_group) != m_configData.end())

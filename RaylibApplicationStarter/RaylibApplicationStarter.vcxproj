@@ -183,6 +183,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="GameObjectCollection.h" />
     <ClInclude Include="Gizmos.h" />
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="ICollider.h" />

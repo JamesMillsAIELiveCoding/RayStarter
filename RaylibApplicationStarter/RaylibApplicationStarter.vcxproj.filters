@@ -95,6 +95,9 @@
     <ClInclude Include="Ray2D.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="GameObjectCollection.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\config.cfg">

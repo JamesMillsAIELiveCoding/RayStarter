@@ -66,6 +66,9 @@
     <ClCompile Include="Gizmos.cpp">
       <Filter>Source Files\Debugging</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -95,7 +98,7 @@
     <ClInclude Include="Ray2D.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectCollection.h">
+    <ClInclude Include="GameObjectManager.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

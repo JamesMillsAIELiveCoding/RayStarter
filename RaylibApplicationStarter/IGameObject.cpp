@@ -6,10 +6,7 @@
 
 void IGameObject::DrawGizmos()
 {
-	if (IsKeyPressed(KEY_GRAVE))
-		m_drawGizmos = !m_drawGizmos;
-
-	if (m_drawGizmos)
+	if (Gizmos::drawGizmos)
 	{
 		Ray2D ray = Ray2D(position, GetForward(), 25.0f);
 		Gizmos::DrawRay(ray, BLUE);
@@ -33,12 +30,17 @@ Vector2 IGameObject::GetRight()
 	return Vector2Rotate(forward, 90);
 }
 
-Texture2D IGameObject::GetTexture() const
-{
-	return m_texture;
+Texture2D IGameObject::GetTexture() const 
+{ 
+	return m_texture; 
 }
 
 ICollider* IGameObject::GetCollider() const
 {
 	return m_collider;
+}
+
+IGameObject::~IGameObject()
+{
+	delete m_collider;
 }

@@ -6,6 +6,7 @@
 
 #include "Assets.h"
 #include "Config.h"
+#include "Gizmos.h"
 
 Application::Application()
 {
@@ -26,7 +27,7 @@ void Application::Run()
 		Update(GetFrameTime());
 
 		BeginDrawing();
-		ClearBackground(RAYWHITE);
+		ClearBackground(BLACK);
 		Draw();
 		EndDrawing();
 	}
@@ -39,11 +40,14 @@ void Application::Run()
 
 void Application::Start()
 {
-	// Runs before the first update loop of the application
+
 }
 
 void Application::Update(float _dt)
 {
+	if (IsKeyPressed(KEY_GRAVE))
+		Gizmos::drawGizmos = !Gizmos::drawGizmos;
+
 	m_gameStateManager->Update(_dt);
 }
 

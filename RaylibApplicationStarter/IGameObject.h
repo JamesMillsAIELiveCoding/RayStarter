@@ -29,14 +29,11 @@ public:
 	Texture2D GetTexture() const;
 	ICollider* GetCollider() const;
 
-	virtual ~IGameObject()
-	{
-		delete m_collider;
-	}
+	virtual ~IGameObject();
 
 protected:
 	IGameObject(Vector2 _position, Vector2 _size, ICollider* _collider) :
-		position(_position), size(_size), color(RAYWHITE),
+		position(_position), size(_size), color(RAYWHITE), 
 		m_texture(), m_collider(_collider), rotation(0), m_drawGizmos(false)
 	{
 	}

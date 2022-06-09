@@ -1,6 +1,8 @@
 #pragma once
 
 #define PROGRAM_CATEGORY "Program"
+#define PLAYER_CATEGORY "Player"
+#define BULLET_CATEGORY "Bullet"
 #define DEBUG_CATEGORY "Debug"
 
 #include <string>

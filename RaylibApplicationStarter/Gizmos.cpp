@@ -3,6 +3,8 @@
 #include <raylib.h>
 #include <raymath.h>
 
+bool Gizmos::drawGizmos = false;
+
 Vector2 MultiplyVectorByFloat(Vector2 _vector, float _value)
 {
 	Vector2 newVector = _vector;
@@ -23,10 +25,10 @@ void Gizmos::DrawWireBox(Vector2 _position, Vector2 _size, Color _color)
 	halfSize.x *= .5f;
 	halfSize.y *= .5f;
 
-	DrawLine(_position.x - halfSize.x, _position.y - halfSize.y, _position.x - halfSize.x, _position.y + halfSize.y, _color);
-	DrawLine(_position.x - halfSize.x, _position.y - halfSize.y, _position.x + halfSize.x, _position.y - halfSize.y, _color);
-	DrawLine(_position.x - halfSize.x, _position.y + halfSize.y, _position.x + halfSize.x, _position.y + halfSize.y, _color);
-	DrawLine(_position.x + halfSize.x, _position.y - halfSize.y, _position.x + halfSize.x, _position.y + halfSize.y, _color);
+	DrawLine((int)_position.x - (int)halfSize.x, (int)_position.y - (int)halfSize.y, (int)_position.x - (int)halfSize.x, (int)_position.y + (int)halfSize.y, _color);
+	DrawLine((int)_position.x - (int)halfSize.x, (int)_position.y - (int)halfSize.y, (int)_position.x + (int)halfSize.x, (int)_position.y - (int)halfSize.y, _color);
+	DrawLine((int)_position.x - (int)halfSize.x, (int)_position.y + (int)halfSize.y, (int)_position.x + (int)halfSize.x, (int)_position.y + (int)halfSize.y, _color);
+	DrawLine((int)_position.x + (int)halfSize.x, (int)_position.y - (int)halfSize.y, (int)_position.x + (int)halfSize.x, (int)_position.y + (int)halfSize.y, _color);
 }
 
 void Gizmos::DrawOrientedWireBox(Vector2 _position, Vector2 _size, Vector2 _forward, Vector2 _right, Color _color)
@@ -44,5 +46,5 @@ void Gizmos::DrawOrientedWireBox(Vector2 _position, Vector2 _size, Vector2 _forw
 
 void Gizmos::DrawWireCircle(Vector2 _position, float _radius, Color _color)
 {
-	DrawCircleLines(_position.x, _position.y, _radius, _color);
+	DrawCircleLines((int)_position.x, (int)_position.y, _radius, _color);
 }

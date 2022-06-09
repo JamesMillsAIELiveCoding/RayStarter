@@ -5,7 +5,7 @@
 class ICollider
 {
 public:
-	virtual void OnCollision(ICollider* _other)
+	virtual void OnCollision(ICollider* _other) 
 	{
 		_other->GetOwner()->OnCollision(m_owner);
 	}
@@ -21,3 +21,4 @@ protected:
 	IGameObject* m_owner;
 
 };
+

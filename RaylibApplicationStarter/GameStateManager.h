@@ -7,6 +7,11 @@
 
 class IGameState;
 
+using std::map;
+using std::vector;
+using std::list;
+using std::function;
+
 class GameStateManager
 {
 public:
@@ -21,11 +26,10 @@ public:
 	void PopState();
 
 protected:
-	std::map<const char*, IGameState*> m_states;
-	std::vector<IGameState*> m_stack;
-	std::list<std::function<void()>> m_commands;
-
-private:
+	map<const char*, IGameState*> m_states;
+	vector<IGameState*> m_stack;
+	list<function<void()>> m_commands;
 
 };
 
+extern GameStateManager* stateManager;

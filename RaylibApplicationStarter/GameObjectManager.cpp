@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-list<IGameObject*> GameObjectManager::m_objects;
+GameObjectManager* gameObjectManager = nullptr;
 
 void GameObjectManager::SpawnObject(IGameObject* _newObject)
 {
@@ -20,6 +20,12 @@ void GameObjectManager::Update(float _dt)
 {
 	for (auto iter = m_objects.begin(); iter != m_objects.end(); iter++)
 		(*iter)->Update(_dt);
+}
+
+void GameObjectManager::UpdatePhysics(float _dt)
+{
+	for (auto iter = m_objects.begin(); iter != m_objects.end(); iter++)
+		(*iter)->PhysicsUpdate(_dt);
 }
 
 void GameObjectManager::Draw()

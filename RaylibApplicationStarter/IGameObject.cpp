@@ -3,6 +3,13 @@
 #include "Gizmos.h"
 #include "Config.h"
 #include "ICollider.h"
+#include "PhysicsManager.h"
+
+void IGameObject::PhysicsUpdate(float _dt)
+{
+	if (m_collider != nullptr)
+		m_collider->Update(_dt);
+}
 
 void IGameObject::DrawGizmos()
 {
@@ -42,5 +49,18 @@ ICollider* IGameObject::GetCollider() const
 
 IGameObject::~IGameObject()
 {
-	delete m_collider;
+	if (m_collider != nullptr)
+	{
+		physics->RemoveCollider(m_collider);
+		delete m_collider;
+	}
+}
+
+void IGameObject::SetCollider(ICollider* _collider)
+{
+	if (m_collider != nullptr)
+		return;
+
+	m_collider = _collider;
+	physics->AddCollider(m_collider);
 }

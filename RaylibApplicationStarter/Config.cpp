@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 
-Config config = Config("config.cfg");
+Config* config = nullptr;
 
 using std::ifstream;
 using std::ios;

@@ -2,6 +2,8 @@
 
 #include "IGameState.h"
 
+GameStateManager* stateManager = nullptr;
+
 GameStateManager::GameStateManager()
 {
 

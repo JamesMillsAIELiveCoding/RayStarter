@@ -43,6 +43,15 @@
     <Filter Include="Header Files\Debugging">
       <UniqueIdentifier>{398ec3d4-cc06-487f-9d88-51262cbf4909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{7ec56a22-32fa-4a6a-b232-cdcdfd48bf89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sounds">
+      <UniqueIdentifier>{bc6ccc45-75e2-4999-8dee-5bb56aba3ad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{37707347-a9f7-4b7d-a49f-22d87172d415}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
       <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

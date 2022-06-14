@@ -18,6 +18,4 @@ private:
 	void Draw();
 	void OnDestroy();
 
-	GameStateManager* m_gameStateManager;
-
 };

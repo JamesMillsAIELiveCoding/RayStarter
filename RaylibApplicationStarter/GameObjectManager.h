@@ -8,13 +8,16 @@ using std::list;
 class GameObjectManager
 {
 public:
-	static void SpawnObject(IGameObject* _newObject);
-	static void DestroyObject(IGameObject* _toDestroy);
-	static void Update(float _dt);
-	static void Draw();
-	static void Clear();
+	void SpawnObject(IGameObject* _newObject);
+	void DestroyObject(IGameObject* _toDestroy);
+	void Update(float _dt);
+	void UpdatePhysics(float _dt);
+	void Draw();
+	void Clear();
 
 private:
-	static list<IGameObject*> m_objects;
+	list<IGameObject*> m_objects;
+
 };
 
+extern GameObjectManager* gameObjectManager;

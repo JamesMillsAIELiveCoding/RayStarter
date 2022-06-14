@@ -14,6 +14,8 @@ public:
 	virtual void Update(float _dt) {}
 	virtual void Draw() {}
 	virtual void OnDestroy() {}
+
+	virtual void PhysicsUpdate(float _dt);
 	virtual void OnCollision(IGameObject* _other) {}
 
 	virtual void DrawGizmos();
@@ -32,15 +34,18 @@ public:
 	virtual ~IGameObject();
 
 protected:
-	IGameObject(Vector2 _position, Vector2 _size, ICollider* _collider) :
-		position(_position), size(_size), color(RAYWHITE), 
-		m_texture(), m_collider(_collider), rotation(0), m_drawGizmos(false)
+	IGameObject() :
+		position(Vector2()), size(Vector2()), color(RAYWHITE), 
+		m_texture(), m_collider(nullptr), rotation(0)
 	{
 	}
 
+	void SetCollider(ICollider* _collider);
+
 	Texture2D m_texture;
+
+private:
 	ICollider* m_collider;
-	bool m_drawGizmos;
 
 };
 

@@ -41,4 +41,4 @@ private:
 	map<GroupID, ConfigSet> m_configData;
 };
 
-extern Config config;
+extern Config* config;

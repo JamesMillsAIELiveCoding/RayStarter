@@ -1,7 +1,8 @@
 #include "PhysicsManager.h"
 #include "GameObjectManager.h"
 
-PhysicsManager* physics = nullptr;
+list<ICollider*> PhysicsManager::m_colliders;
+PhysicsManager* PhysicsManager::m_instance = nullptr;
 
 void PhysicsManager::AddCollider(ICollider* _collider)
 {
@@ -15,7 +16,7 @@ void PhysicsManager::RemoveCollider(ICollider* _collider)
 
 void PhysicsManager::Update(float _dt)
 {
-	gameObjectManager->UpdatePhysics(_dt);
+	GameObjectManager::UpdatePhysics(_dt);
 
 	for (auto iter = m_colliders.begin(); iter != m_colliders.end(); iter++)
 	{

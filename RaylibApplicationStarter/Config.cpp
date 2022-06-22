@@ -3,10 +3,11 @@
 #include <fstream>
 #include <sstream>
 
-Config* config = nullptr;
-
 using std::ifstream;
 using std::ios;
+
+map<GroupID, ConfigSet> Config::m_configData;
+Config* Config::m_instance = nullptr;
 
 int Config::GetIntValue(string _group, string _id)
 {
@@ -76,9 +77,11 @@ const char* Config::GetTextValue(string _group, string _id)
 	return 0;
 }
 
-void Config::Load()
+void Config::Load(string _filePath)
 {
-	ifstream configFile("assets\\" + m_filePath);
+	ifstream configFile("assets\\" + _filePath);
+	if (configFile.bad())
+		throw "Config file missing";
 
 	std::string line;
 	std::string lastGroup;
@@ -107,4 +110,6 @@ void Config::Load()
 			m_configData[lastGroup][id] = val;
 		}
 	}
+
+	configFile.close();
 }

@@ -35,19 +35,19 @@ void Application::Run()
 
 void Application::Start()
 {
-	config = new Config("config.cfg");
+	Config::CreateInstance("config.cfg");
 
-	windowWidth = config->GetIntValue(PROGRAM_CATEGORY, "width");
-	windowHeight = config->GetIntValue(PROGRAM_CATEGORY, "height");
-	InitWindow(windowWidth, windowHeight, config->GetTextValue(PROGRAM_CATEGORY, "name"));
+	windowWidth = Config::GetIntValue(PROGRAM_CATEGORY, "width");
+	windowHeight = Config::GetIntValue(PROGRAM_CATEGORY, "height");
+	InitWindow(windowWidth, windowHeight, Config::GetTextValue(PROGRAM_CATEGORY, "name"));
 
-	if (config->GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
+	if (Config::GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
 		InitAudioDevice();
 
-	gameObjectManager = new GameObjectManager();
-	stateManager = new GameStateManager();
-	physics = new PhysicsManager();
-	assets = new Assets();
+	GameObjectManager::CreateInstance();
+	GameStateManager::CreateInstance();
+	PhysicsManager::CreateInstance();
+	Assets::CreateInstance();
 }
 
 void Application::Update(float _dt)
@@ -55,27 +55,27 @@ void Application::Update(float _dt)
 	if (IsKeyPressed(KEY_GRAVE))
 		Gizmos::drawGizmos = !Gizmos::drawGizmos;
 
-	gameObjectManager->Update(_dt);
-	stateManager->Update(_dt);
-	physics->Update(_dt);
+	GameObjectManager::Update(_dt);
+	GameStateManager::Update(_dt);
+	PhysicsManager::Update(_dt);
 }
 
 void Application::Draw()
 {
-	gameObjectManager->Draw();
-	stateManager->Draw();
+	GameObjectManager::Draw();
+	GameStateManager::Draw();
 }
 
 void Application::OnDestroy()
 {
 	CloseWindow();
 
-	if (config->GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
+	if (Config::GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
 		CloseAudioDevice();
 
-	delete config;
-	delete gameObjectManager;
-	delete stateManager;
-	delete physics;
-	delete assets;
+	Config::DestroyInstance();
+	GameObjectManager::DestroyInstance();
+	GameStateManager::DestroyInstance();
+	PhysicsManager::DestroyInstance();
+	Assets::DestroyInstance();
 }

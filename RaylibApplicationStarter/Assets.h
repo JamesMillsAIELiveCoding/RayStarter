@@ -4,31 +4,35 @@
 #include <string>
 
 using std::string;
+using std::map;
 
 struct Texture2D;
 struct Sound;
 struct Font;
 
-struct Assets
+class Assets
 {
 public:
-	Assets();
-	~Assets();
-	Texture2D GetTexture(const char* _id);
-	Sound GetSound(const char* _id);
-	Font GetFont(const char* _id);
+	static Texture2D GetTexture(const char* _id);
+	static Sound GetSound(const char* _id);
+	static Font GetFont(const char* _id);
+	static void CreateInstance() { m_instance = new Assets(); }
+	static void DestroyInstance() { delete m_instance; }
 
 private:
-	void Load();
-	void Unload();
-	void LoadTextures();
-	void LoadSounds();
-	void LoadFonts();
+	Assets();
+	Assets(const Assets&) = delete;
+	~Assets();
 
-	std::map<string, Texture2D> textures;
-	std::map<string, Sound> sounds;
-	std::map<string, Font> fonts;
+	static void Load();
+	static void Unload();
+	static void LoadTextures();
+	static void LoadSounds();
+	static void LoadFonts();
+
+	static map<string, Texture2D> textures;
+	static map<string, Sound> sounds;
+	static map<string, Font> fonts;
+	static Assets* m_instance;
 
 };
-
-extern Assets* assets;

@@ -2,7 +2,8 @@
 
 #include <algorithm>
 
-GameObjectManager* gameObjectManager = nullptr;
+list<IGameObject*> GameObjectManager::m_objects;
+GameObjectManager* GameObjectManager::m_instance = nullptr;
 
 void GameObjectManager::SpawnObject(IGameObject* _newObject)
 {
@@ -14,6 +15,7 @@ void GameObjectManager::DestroyObject(IGameObject* _toDestroy)
 {
 	_toDestroy->OnDestroy();
 	m_objects.remove(_toDestroy);
+	delete _toDestroy;
 }
 
 void GameObjectManager::Update(float _dt)

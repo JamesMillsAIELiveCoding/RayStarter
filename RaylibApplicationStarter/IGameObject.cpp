@@ -51,7 +51,7 @@ IGameObject::~IGameObject()
 {
 	if (m_collider != nullptr)
 	{
-		physics->RemoveCollider(m_collider);
+		PhysicsManager::RemoveCollider(m_collider);
 		delete m_collider;
 	}
 }
@@ -62,5 +62,5 @@ void IGameObject::SetCollider(ICollider* _collider)
 		return;
 
 	m_collider = _collider;
-	physics->AddCollider(m_collider);
+	PhysicsManager::AddCollider(m_collider);
 }

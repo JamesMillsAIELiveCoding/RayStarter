@@ -15,21 +15,24 @@ using std::function;
 class GameStateManager
 {
 public:
-	GameStateManager();
-	~GameStateManager();
 
-	void Update(float _dt);
-	void Draw();
+	static void Update(float _dt);
+	static void Draw();
 
-	void SetState(const char* _name, IGameState* state);
-	void PushState(const char* _name);
-	void PopState();
+	static void SetState(const char* _name, IGameState* state);
+	static void PushState(const char* _name);
+	static void PopState();
+	static void CreateInstance() { m_instance = new GameStateManager(); }
+	static void DestroyInstance() { delete m_instance; }
 
 protected:
-	map<const char*, IGameState*> m_states;
-	vector<IGameState*> m_stack;
-	list<function<void()>> m_commands;
+	GameStateManager();
+	GameStateManager(const GameStateManager&) = delete;
+	~GameStateManager();
+
+	static map<const char*, IGameState*> m_states;
+	static vector<IGameState*> m_stack;
+	static list<function<void()>> m_commands;
+	static GameStateManager* m_instance;
 
 };
-
-extern GameStateManager* stateManager;

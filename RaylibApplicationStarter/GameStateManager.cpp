@@ -2,7 +2,10 @@
 
 #include "IGameState.h"
 
-GameStateManager* stateManager = nullptr;
+map<const char*, IGameState*> GameStateManager::m_states;
+vector<IGameState*> GameStateManager::m_stack;
+list<function<void()>> GameStateManager::m_commands;
+GameStateManager* GameStateManager::m_instance = nullptr;
 
 GameStateManager::GameStateManager()
 {

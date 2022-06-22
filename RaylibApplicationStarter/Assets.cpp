@@ -7,7 +7,10 @@
 
 namespace fs = std::filesystem;
 
-Assets* assets = nullptr;
+map<string, Texture2D> Assets::textures;
+map<string, Sound> Assets::sounds;
+map<string, Font> Assets::fonts;
+Assets* Assets::m_instance = nullptr;
 
 Texture2D Assets::GetTexture(const char* _id)
 {

@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <raymath.h>
 
 using std::ifstream;
 using std::ios;
@@ -60,6 +61,68 @@ float Config::GetFloatValue(string _group, string _id)
 	}
 
 	return 0;
+}
+
+Vector2 Config::GetVectorValue(string _group, string _id)
+{
+	if (m_configData.find(_group) != m_configData.end())
+	{
+		ConfigSet& set = m_configData[_group];
+
+		if (set.find(_id) != set.end())
+		{
+			string token;
+			string delim = ",";
+			string s = set[_id];
+
+			float values[2];
+			size_t pos = 0;
+			int index = 0;
+			while ((pos = s.find(delim)) != string::npos)
+			{
+				token = s.substr(0, pos);
+				values[index++] = std::stof(token);
+				s.erase(0, pos + delim.length());
+			}
+
+			values[index++] = std::stof(s);
+
+			return Vector2{ values[0], values[1] };
+		}
+	}
+
+	return Vector2();
+}
+
+Color Config::GetColorValue(string _group, string _id)
+{
+	if (m_configData.find(_group) != m_configData.end())
+	{
+		ConfigSet& set = m_configData[_group];
+
+		if (set.find(_id) != set.end())
+		{
+			string token;
+			string delim = ",";
+			string s = set[_id];
+
+			unsigned char values[4];
+			size_t pos = 0;
+			int index = 0;
+			while ((pos = s.find(delim)) != string::npos)
+			{
+				token = s.substr(0, pos);
+				values[index++] = std::stoi(token);
+				s.erase(0, pos + delim.length());
+			}
+
+			values[index++] = std::stof(s);
+
+			return Color{ values[0], values[1], values[2], values[3] };
+		}
+	}
+
+	return Color();
 }
 
 const char* Config::GetTextValue(string _group, string _id)

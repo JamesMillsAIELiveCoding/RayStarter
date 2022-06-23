@@ -14,18 +14,21 @@ Application::Application()
 {
 	windowWidth = 0;
 	windowHeight = 0;
+	m_debugKey = 0;
 }
 
 void Application::Run()
 {
 	Start();
 
+	Color clearColor = Config::GetColorValue(PROGRAM_CATEGORY, "clearColor");
+
 	while (!WindowShouldClose())
 	{
 		Update(GetFrameTime());
 
 		BeginDrawing();
-		ClearBackground(BLACK);
+		ClearBackground(clearColor);
 		Draw();
 		EndDrawing();
 	}
@@ -44,6 +47,9 @@ void Application::Start()
 	if (Config::GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
 		InitAudioDevice();
 
+	SetExitKey(Config::GetIntValue(PROGRAM_CATEGORY, "quitKey"));
+	m_debugKey = Config::GetIntValue(DEBUG_CATEGORY, "showGizmosKey");
+
 	GameObjectManager::CreateInstance();
 	GameStateManager::CreateInstance();
 	PhysicsManager::CreateInstance();
@@ -52,7 +58,7 @@ void Application::Start()
 
 void Application::Update(float _dt)
 {
-	if (IsKeyPressed(KEY_GRAVE))
+	if (IsKeyPressed(m_debugKey))
 		Gizmos::drawGizmos = !Gizmos::drawGizmos;
 
 	GameObjectManager::Update(_dt);

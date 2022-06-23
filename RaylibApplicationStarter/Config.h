@@ -9,6 +9,8 @@
 using std::string;
 using std::map;
 
+struct Vector2;
+struct Color;
 typedef string GroupID;
 typedef map<string, string> ConfigSet;
 
@@ -30,6 +32,8 @@ public:
 	static int GetIntValue(string _group, string _id);
 	static bool GetBooleanValue(string _group, string _id);
 	static float GetFloatValue(string _group, string _id);
+	static Vector2 GetVectorValue(string _group, string _id);
+	static Color GetColorValue(string _group, string _id);
 	static const char* GetTextValue(string _group, string _id);
 	static void CreateInstance(string _filePath) { m_instance = new Config(_filePath); }
 	static void DestroyInstance() { delete m_instance; }

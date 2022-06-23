@@ -16,4 +16,6 @@ private:
 	void Draw();
 	void OnDestroy();
 
+	int m_debugKey;
+
 };

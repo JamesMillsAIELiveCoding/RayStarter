@@ -1,5 +1,7 @@
 #pragma once
 
+#include <raymath.h>
+
 class Application
 {
 public:
@@ -9,6 +11,8 @@ public:
 
 	int windowWidth;
 	int windowHeight;
+	bool allowResize;
+	bool useFullscreen;
 
 private:
 	void Start();
@@ -16,6 +20,10 @@ private:
 	void Draw();
 	void OnDestroy();
 
+	void Configure();
+
+	Color m_clearColor;
 	int m_debugKey;
+	int m_configReloadKey;
 
 };

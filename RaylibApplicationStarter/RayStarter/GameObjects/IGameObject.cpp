@@ -1,9 +1,9 @@
 #include "IGameObject.h"
 
-#include "Gizmos.h"
-#include "Config.h"
-#include "ICollider.h"
-#include "PhysicsManager.h"
+#include "../Utils/Gizmos.h"
+#include "../Utils/Config.h"
+#include "../Physics/ICollider.h"
+#include "../Physics/PhysicsManager.h"
 
 void IGameObject::PhysicsUpdate(float _dt)
 {

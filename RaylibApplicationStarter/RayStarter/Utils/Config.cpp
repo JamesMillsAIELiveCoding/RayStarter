@@ -7,14 +7,25 @@
 using std::ifstream;
 using std::ios;
 
-map<GroupID, ConfigSet> Config::m_configData;
 Config* Config::m_instance = nullptr;
+
+Config::Config(string _filePath)
+{
+	m_filePath = _filePath;
+	Load(m_filePath);
+}
+
+void Config::Reload()
+{
+	m_instance->m_configData.clear();
+	m_instance->Load(m_instance->m_filePath);
+}
 
 int Config::GetIntValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -27,9 +38,9 @@ int Config::GetIntValue(string _group, string _id)
 
 bool Config::GetBooleanValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -50,9 +61,9 @@ bool Config::GetBooleanValue(string _group, string _id)
 
 float Config::GetFloatValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -65,9 +76,9 @@ float Config::GetFloatValue(string _group, string _id)
 
 Vector2 Config::GetVectorValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -96,9 +107,9 @@ Vector2 Config::GetVectorValue(string _group, string _id)
 
 Color Config::GetColorValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -127,9 +138,9 @@ Color Config::GetColorValue(string _group, string _id)
 
 const char* Config::GetTextValue(string _group, string _id)
 {
-	if (m_configData.find(_group) != m_configData.end())
+	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
 	{
-		ConfigSet& set = m_configData[_group];
+		ConfigSet& set = m_instance->m_configData[_group];
 
 		if (set.find(_id) != set.end())
 		{

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IGameObject.h"
+#include "../GameObjects/IGameObject.h"
 
 class ICollider
 {

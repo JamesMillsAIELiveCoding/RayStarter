@@ -1,5 +1,5 @@
 #include "PhysicsManager.h"
-#include "GameObjectManager.h"
+#include "../GameObjects/GameObjectManager.h"
 
 list<ICollider*> PhysicsManager::m_colliders;
 PhysicsManager* PhysicsManager::m_instance = nullptr;

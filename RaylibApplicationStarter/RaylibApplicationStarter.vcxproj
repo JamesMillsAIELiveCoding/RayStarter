@@ -171,28 +171,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Assets.cpp" />
-    <ClCompile Include="Config.cpp" />
-    <ClCompile Include="GameObjectManager.cpp" />
-    <ClCompile Include="Gizmos.cpp" />
-    <ClCompile Include="GameStateManager.cpp" />
-    <ClCompile Include="IGameObject.cpp" />
+    <ClCompile Include="RayStarter\Application.cpp" />
+    <ClCompile Include="RayStarter\Utils\Assets.cpp" />
+    <ClCompile Include="RayStarter\Utils\Config.cpp" />
+    <ClCompile Include="RayStarter\GameObjects\GameObjectManager.cpp" />
+    <ClCompile Include="RayStarter\GameStates\GameStateManager.cpp" />
+    <ClCompile Include="RayStarter\GameObjects\IGameObject.cpp" />
+    <ClCompile Include="RayStarter\Utils\Gizmos.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="RayStarter\Physics\PhysicsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Assets.h" />
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="Gizmos.h" />
-    <ClInclude Include="GameStateManager.h" />
-    <ClInclude Include="ICollider.h" />
-    <ClInclude Include="IGameObject.h" />
-    <ClInclude Include="IGameState.h" />
-    <ClInclude Include="PhysicsManager.h" />
-    <ClInclude Include="Ray2D.h" />
+    <ClInclude Include="RayStarter\Application.h" />
+    <ClInclude Include="RayStarter\Utils\Assets.h" />
+    <ClInclude Include="RayStarter\Utils\Config.h" />
+    <ClInclude Include="RayStarter\GameObjects\GameObjectManager.h" />
+    <ClInclude Include="RayStarter\GameStates\GameStateManager.h" />
+    <ClInclude Include="RayStarter\GameObjects\IGameObject.h" />
+    <ClInclude Include="RayStarter\Utils\Gizmos.h" />
+    <ClInclude Include="RayStarter\GameStates\IGameState.h" />
+    <ClInclude Include="RayStarter\Physics\ICollider.h" />
+    <ClInclude Include="RayStarter\Physics\PhysicsManager.h" />
+    <ClInclude Include="RayStarter\Physics\Ray2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\config.cfg" />

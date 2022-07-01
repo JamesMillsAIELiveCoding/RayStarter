@@ -127,7 +127,7 @@ Color Config::GetColorValue(string _group, string _id)
 				s.erase(0, pos + delim.length());
 			}
 
-			values[index++] = std::stof(s);
+			values[index++] = std::stoi(s);
 
 			return Color{ values[0], values[1], values[2], values[3] };
 		}

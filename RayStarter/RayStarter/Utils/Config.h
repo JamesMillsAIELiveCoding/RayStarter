@@ -42,6 +42,8 @@ public:
 	static void CreateInstance(string _filePath) { m_instance = new Config(_filePath); }
 	static void DestroyInstance() { delete m_instance; }
 
+	static bool IsValid() { return m_instance->m_configData.size() > 0; }
+
 private:
 	Config() {};
 	Config(string _filePath);

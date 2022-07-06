@@ -24,7 +24,7 @@ public:
 private:
 	GameObjectManager() {};
 	GameObjectManager(const GameObjectManager&) = delete;
-	static list<IGameObject*> m_objects;
+	list<IGameObject*> m_objects;
 	static GameObjectManager* m_instance;
 
 };

@@ -30,9 +30,9 @@ protected:
 	GameStateManager(const GameStateManager&) = delete;
 	~GameStateManager();
 
-	static map<const char*, IGameState*> m_states;
-	static vector<IGameState*> m_stack;
-	static list<function<void()>> m_commands;
+	map<const char*, IGameState*> m_states;
+	vector<IGameState*> m_stack;
+	list<function<void()>> m_commands;
 	static GameStateManager* m_instance;
 
 };

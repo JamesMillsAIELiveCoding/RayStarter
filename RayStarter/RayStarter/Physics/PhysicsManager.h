@@ -20,7 +20,7 @@ private:
 	PhysicsManager(const PhysicsManager&) = delete;
 	~PhysicsManager() {}
 
-	static list<ICollider*> m_colliders;
+	list<ICollider*> m_colliders;
 	static PhysicsManager* m_instance;
 
 };

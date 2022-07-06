@@ -5,18 +5,9 @@
 
 bool Gizmos::drawGizmos = false;
 
-Vector2 MultiplyVectorByFloat(Vector2 _vector, float _value)
-{
-	Vector2 newVector = _vector;
-	newVector.x *= _value;
-	newVector.y *= _value;
-
-	return newVector;
-}
-
 void Gizmos::DrawRay(Ray2D _ray, Color _color)
 {
-	DrawLineEx(_ray.position, Vector2Add(_ray.position, MultiplyVectorByFloat(_ray.direction, _ray.length)), 2.0f, _color);
+	DrawLineEx(_ray.position, Vector2Add(_ray.position, Vector2Scale(_ray.direction, _ray.length)), 2.0f, _color);
 }
 
 void Gizmos::DrawWireBox(Vector2 _position, Vector2 _size, Color _color)

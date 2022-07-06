@@ -2,9 +2,6 @@
 
 #include "IGameState.h"
 
-map<const char*, IGameState*> GameStateManager::m_states;
-vector<IGameState*> GameStateManager::m_stack;
-list<function<void()>> GameStateManager::m_commands;
 GameStateManager* GameStateManager::m_instance = nullptr;
 
 GameStateManager::GameStateManager()
@@ -25,13 +22,13 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::Update(float _dt)
 {
-	for (auto& cmd : m_commands)
+	for (auto& cmd : m_instance->m_commands)
 	{
 		cmd();
 	}
-	m_commands.clear();
+	m_instance->m_commands.clear();
 
-	for (auto& state : m_stack)
+	for (auto& state : m_instance->m_stack)
 	{
 		state->Update(_dt);
 	}
@@ -39,7 +36,7 @@ void GameStateManager::Update(float _dt)
 
 void GameStateManager::Draw()
 {
-	for (auto& state : m_stack)
+	for (auto& state : m_instance->m_stack)
 	{
 		state->Draw();
 	}
@@ -47,26 +44,26 @@ void GameStateManager::Draw()
 
 void GameStateManager::SetState(const char* _name, IGameState* state)
 {
-	m_commands.push_back([=]()
+	m_instance->m_commands.push_back([=]()
 		{
-			m_states[_name] = state;
+			m_instance->m_states[_name] = state;
 		});
 }
 
 void GameStateManager::PushState(const char* _name)
 {
-	m_commands.push_back([=]()
+	m_instance->m_commands.push_back([=]()
 		{
-			m_states[_name]->Start();
-			m_stack.push_back(m_states[_name]);
+			m_instance->m_states[_name]->Start();
+			m_instance->m_stack.push_back(m_instance->m_states[_name]);
 		});
 }
 
 void GameStateManager::PopState()
 {
-	m_commands.push_back([=]()
+	m_instance->m_commands.push_back([=]()
 		{
-			m_stack[m_stack.size() - 1]->OnDestroy();
-			m_stack.pop_back();
+			m_instance->m_stack[m_instance->m_stack.size() - 1]->OnDestroy();
+			m_instance->m_stack.pop_back();
 		});
 }

@@ -1,7 +1,5 @@
 #include "Application.h"
 
-#include <raylib.h>
-
 #include "GameStates/GameStateManager.h"
 #include "GameObjects/GameObjectManager.h"
 #include "Physics/PhysicsManager.h"
@@ -10,13 +8,15 @@
 #include "Utils/Config.h"
 #include "Utils/Gizmos.h"
 
+#include <raylib.h>
+
 Application::Application()
 {
 	windowWidth = 0;
 	windowHeight = 0;
-	allowResize = false;
-	useFullscreen = false;
+	isFullscreen = false;
 	m_debugKey = 0;
+	m_fullscreenKey = 0;
 	m_configReloadKey = 0;
 	m_clearColor = {};
 }
@@ -43,21 +43,11 @@ void Application::Start()
 	Config::CreateInstance("config.cfg");
 	Configure();
 
-	if (allowResize && !useFullscreen)
-		SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-
 	InitWindow(windowWidth, windowHeight, Config::GetTextValue(PROGRAM_CATEGORY, "name"));
 	SetExitKey(Config::GetIntValue(PROGRAM_CATEGORY, "quitKey"));
 
-	if (useFullscreen)
-	{
-		windowWidth = GetMonitorWidth(0);
-		windowHeight = GetMonitorHeight(0);
-		SetWindowSize(windowWidth, windowHeight);
-	}
-
-	if (useFullscreen)
-		ToggleFullscreen();
+	if (isFullscreen)
+		SwapFullscreenMode();
 
 	if (Config::GetBooleanValue(PROGRAM_CATEGORY, "audioEnabled"))
 		InitAudioDevice();
@@ -70,14 +60,11 @@ void Application::Start()
 
 void Application::Update(float _dt)
 {
-	if (IsWindowResized())
-	{
-		windowWidth = GetScreenWidth();
-		windowHeight = GetScreenHeight();
-	}
-
 	if (IsKeyPressed(m_debugKey))
 		Gizmos::drawGizmos = !Gizmos::drawGizmos;
+
+	if (IsKeyPressed(m_fullscreenKey))
+		SwapFullscreenMode();
 
 	if (IsKeyPressed(m_configReloadKey))
 	{
@@ -114,9 +101,24 @@ void Application::Configure()
 {
 	windowWidth = Config::GetIntValue(WINDOW_CATEGORY, "width");
 	windowHeight = Config::GetIntValue(WINDOW_CATEGORY, "height");
-	allowResize = Config::GetBooleanValue(WINDOW_CATEGORY, "allowResize");
-	useFullscreen = Config::GetBooleanValue(WINDOW_CATEGORY, "useFullscreen");
+	isFullscreen = Config::GetBooleanValue(WINDOW_CATEGORY, "useFullscreen");
+	m_fullscreenKey = Config::GetIntValue(WINDOW_CATEGORY, "toggleFullscreenKey");
 	m_clearColor = Config::GetColorValue(PROGRAM_CATEGORY, "clearColor");
 	m_debugKey = Config::GetIntValue(DEBUG_CATEGORY, "showGizmosKey");
 	m_configReloadKey = Config::GetIntValue(DEBUG_CATEGORY, "reloadConfigKey");
+}
+
+void Application::SwapFullscreenMode()
+{
+	isFullscreen = !isFullscreen;
+
+	if(!isFullscreen)
+		ToggleFullscreen();
+
+	windowWidth = isFullscreen ? GetMonitorWidth(0) : Config::GetIntValue(WINDOW_CATEGORY, "width");
+	windowHeight = isFullscreen ? GetMonitorHeight(0) : Config::GetIntValue(WINDOW_CATEGORY, "height");
+	SetWindowSize(windowWidth, windowHeight);
+
+	if(isFullscreen)
+		ToggleFullscreen();
 }

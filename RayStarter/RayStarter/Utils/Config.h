@@ -6,12 +6,11 @@
 
 #include <string>
 #include <map>
+#include <raylib.h>
 
 using std::string;
 using std::map;
 
-struct Vector2;
-struct Color;
 typedef string GroupID;
 typedef map<string, string> ConfigSet;
 

@@ -2,7 +2,6 @@
 
 #include <fstream>
 #include <sstream>
-#include <raymath.h>
 
 using std::ifstream;
 using std::ios;

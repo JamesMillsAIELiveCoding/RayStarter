@@ -121,5 +121,6 @@
     <None Include="assets\config.cfg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -54,67 +54,67 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RayStarter\GameObjects\GameObjectManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\GameStates\GameStateManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\GameObjects\IGameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\Physics\PhysicsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RayStarter\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\Utils\Assets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\Utils\Config.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RayStarter\Utils\Gizmos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RayStarter\Utils\Assets.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\Utils\Config.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\Physics\PhysicsManager.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\GameObjects\GameObjectManager.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\GameStates\GameStateManager.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\GameObjects\IGameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\Utils\Gizmos.cpp">
+      <Filter>Source Files\Debugging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RayStarter\GameObjects\GameObjectManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RayStarter\GameStates\GameStateManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RayStarter\GameObjects\IGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RayStarter\Physics\ICollider.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RayStarter\Physics\PhysicsManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RayStarter\Physics\Ray2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RayStarter\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RayStarter\Utils\Assets.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RayStarter\Physics\Ray2D.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="RayStarter\Utils\Config.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RayStarter\Physics\PhysicsManager.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\Physics\ICollider.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Utils\Gizmos.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\GameObjects\IGameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\GameObjects\GameObjectManager.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\Utils\Config.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\Utils\Assets.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\GameStates\GameStateManager.h">
+      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\GameStates\IGameState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

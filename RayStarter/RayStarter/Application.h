@@ -13,11 +13,19 @@ public:
 	int windowHeight;
 	bool isFullscreen;
 
+protected:
+	virtual void OnStart() {}
+	virtual void OnUpdate(float _dt) {}
+	virtual void OnDraw() {}
+	virtual void OnDestroy() {}
+
+	virtual void OnConfigure() {}
+
 private:
 	void Start();
 	void Update(float _dt);
 	void Draw();
-	void OnDestroy();
+	void Destroy();
 
 	void Configure();
 	void SwapFullscreenMode();

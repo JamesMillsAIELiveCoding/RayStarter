@@ -35,7 +35,7 @@ void Application::Run()
 		EndDrawing();
 	}
 
-	OnDestroy();
+	Destroy();
 }
 
 void Application::Start()
@@ -56,6 +56,8 @@ void Application::Start()
 	GameObjectManager::CreateInstance();
 	PhysicsManager::CreateInstance();
 	Assets::CreateInstance();
+
+	OnStart();
 }
 
 void Application::Update(float _dt)
@@ -75,15 +77,19 @@ void Application::Update(float _dt)
 	GameStateManager::Update(_dt);
 	GameObjectManager::Update(_dt);
 	PhysicsManager::Update(_dt);
+
+	OnUpdate(_dt);
 }
 
 void Application::Draw()
 {
 	GameStateManager::Draw();
 	GameObjectManager::Draw();
+
+	OnDraw();
 }
 
-void Application::OnDestroy()
+void Application::Destroy()
 {
 	CloseWindow();
 
@@ -95,6 +101,8 @@ void Application::OnDestroy()
 	GameStateManager::DestroyInstance();
 	PhysicsManager::DestroyInstance();
 	Assets::DestroyInstance();
+
+	OnDestroy();
 }
 
 void Application::Configure()
@@ -106,6 +114,8 @@ void Application::Configure()
 	m_clearColor = Config::GetColorValue(PROGRAM_CATEGORY, "clearColor");
 	m_debugKey = Config::GetIntValue(DEBUG_CATEGORY, "showGizmosKey");
 	m_configReloadKey = Config::GetIntValue(DEBUG_CATEGORY, "reloadConfigKey");
+
+	OnConfigure();
 }
 
 void Application::SwapFullscreenMode()

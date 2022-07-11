@@ -10,6 +10,7 @@ class GameObjectManager
 public:
 	static void SpawnObject(IGameObject* _newObject);
 	static void DestroyObject(IGameObject* _toDestroy);
+	static void ReconfigureObjects();
 	static void Update(float _dt);
 	static void UpdatePhysics(float _dt);
 	static void Draw();

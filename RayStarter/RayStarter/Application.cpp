@@ -71,7 +71,7 @@ void Application::Update(float _dt)
 	if (IsKeyPressed(m_configReloadKey))
 	{
 		Config::Reload();
-		m_clearColor = Config::GetColorValue(PROGRAM_CATEGORY, "clearColor");
+		Configure(true);
 	}
 
 	GameStateManager::Update(_dt);
@@ -105,7 +105,7 @@ void Application::Destroy()
 	OnDestroy();
 }
 
-void Application::Configure()
+void Application::Configure(bool _isReconfigure)
 {
 	windowWidth = Config::GetIntValue(WINDOW_CATEGORY, "width");
 	windowHeight = Config::GetIntValue(WINDOW_CATEGORY, "height");
@@ -116,6 +116,15 @@ void Application::Configure()
 	m_configReloadKey = Config::GetIntValue(DEBUG_CATEGORY, "reloadConfigKey");
 
 	OnConfigure();
+
+	if (_isReconfigure)
+	{
+		SetWindowTitle(Config::GetTextValue(PROGRAM_CATEGORY, "name"));
+		SetExitKey(Config::GetIntValue(PROGRAM_CATEGORY, "quitKey"));
+		SetWindowSize(windowWidth, windowHeight);
+
+		GameObjectManager::ReconfigureObjects();
+	}
 }
 
 void Application::SwapFullscreenMode()

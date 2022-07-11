@@ -27,7 +27,7 @@ private:
 	void Draw();
 	void Destroy();
 
-	void Configure();
+	void Configure(bool _isReconfigure = false);
 	void SwapFullscreenMode();
 
 	Color m_clearColor;

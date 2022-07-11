@@ -14,6 +14,7 @@ public:
 	virtual void Update(float _dt) {}
 	virtual void Draw() {}
 	virtual void OnDestroy() {}
+	virtual void OnReconfigure() {}
 
 	virtual void PhysicsUpdate(float _dt);
 	virtual void OnCollision(IGameObject* _other) {}

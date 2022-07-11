@@ -41,7 +41,7 @@ public:
 	static void CreateInstance(string _filePath) { m_instance = new Config(_filePath); }
 	static void DestroyInstance() { delete m_instance; }
 
-	static bool IsValid() { return m_instance->m_configData.size() > 0; }
+	static bool IsValid() { return m_instance != nullptr; }
 
 private:
 	Config() {};
@@ -50,6 +50,11 @@ private:
 	void Load(string _filePath);
 
 	string m_filePath;
-	map<GroupID, ConfigSet> m_configData;
+	map<GroupID, map<string, int>> m_intValues;
+	map<GroupID, map<string, bool>> m_boolValues;
+	map<GroupID, map<string, float>> m_floatValues;
+	map<GroupID, map<string, Vector2>> m_vectorValues;
+	map<GroupID, map<string, Color>> m_colorValues;
+	map<GroupID, map<string, string>> m_textValues;
 	static Config* m_instance;
 };

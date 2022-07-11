@@ -19,6 +19,12 @@ void GameObjectManager::DestroyObject(IGameObject* _toDestroy)
 	delete _toDestroy;
 }
 
+void GameObjectManager::ReconfigureObjects()
+{
+	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)
+		(*iter)->OnReconfigure();
+}
+
 void GameObjectManager::Update(float _dt)
 {
 	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)

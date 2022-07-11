@@ -2,9 +2,11 @@
 
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 using std::ifstream;
 using std::ios;
+using std::vector;
 
 Config* Config::m_instance = nullptr;
 
@@ -16,19 +18,25 @@ Config::Config(string _filePath)
 
 void Config::Reload()
 {
-	m_instance->m_configData.clear();
+	m_instance->m_intValues.clear();
+	m_instance->m_boolValues.clear();
+	m_instance->m_floatValues.clear();
+	m_instance->m_vectorValues.clear();
+	m_instance->m_colorValues.clear();
+	m_instance->m_textValues.clear();
+
 	m_instance->Load(m_instance->m_filePath);
 }
 
 int Config::GetIntValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_intValues.find(_group) != m_instance->m_intValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_intValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
-			return atoi(set[_id].c_str());
+			return set[_id];
 		}
 	}
 
@@ -37,21 +45,13 @@ int Config::GetIntValue(string _group, string _id)
 
 bool Config::GetBooleanValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_boolValues.find(_group) != m_instance->m_boolValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_boolValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
-			bool val = false;
-			if (set[_id] == "true")
-				val = true;
-			else if (set[_id] == "false")
-				val = false;
-			else
-				throw InvalidValueException(set[_id]);
-
-			return val;
+			return set[_id];
 		}
 	}
 
@@ -60,13 +60,13 @@ bool Config::GetBooleanValue(string _group, string _id)
 
 float Config::GetFloatValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_floatValues.find(_group) != m_instance->m_floatValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_floatValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
-			return (float)atof(set[_id].c_str());
+			return set[_id];
 		}
 	}
 
@@ -75,60 +75,28 @@ float Config::GetFloatValue(string _group, string _id)
 
 Vector2 Config::GetVectorValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_vectorValues.find(_group) != m_instance->m_vectorValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_vectorValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
-			string token;
-			string delim = ",";
-			string s = set[_id];
-
-			float values[2];
-			size_t pos = 0;
-			int index = 0;
-			while ((pos = s.find(delim)) != string::npos)
-			{
-				token = s.substr(0, pos);
-				values[index++] = std::stof(token);
-				s.erase(0, pos + delim.length());
-			}
-
-			values[index++] = std::stof(s);
-
-			return Vector2{ values[0], values[1] };
+			return set[_id];
 		}
 	}
 
-	return Vector2();
+	return Vector2{};
 }
 
 Color Config::GetColorValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_colorValues.find(_group) != m_instance->m_colorValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_colorValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
-			string token;
-			string delim = ",";
-			string s = set[_id];
-
-			unsigned char values[4];
-			size_t pos = 0;
-			int index = 0;
-			while ((pos = s.find(delim)) != string::npos)
-			{
-				token = s.substr(0, pos);
-				values[index++] = std::stoi(token);
-				s.erase(0, pos + delim.length());
-			}
-
-			values[index++] = std::stoi(s);
-
-			return Color{ values[0], values[1], values[2], values[3] };
+			return set[_id];
 		}
 	}
 
@@ -137,9 +105,9 @@ Color Config::GetColorValue(string _group, string _id)
 
 const char* Config::GetTextValue(string _group, string _id)
 {
-	if (m_instance->m_configData.find(_group) != m_instance->m_configData.end())
+	if (m_instance->m_textValues.find(_group) != m_instance->m_textValues.end())
 	{
-		ConfigSet& set = m_instance->m_configData[_group];
+		auto& set = m_instance->m_textValues[_group];
 
 		if (set.find(_id) != set.end())
 		{
@@ -180,7 +148,64 @@ void Config::Load(string _filePath)
 			std::string val = line;
 			val.erase(0, index + 1);
 
-			m_configData[lastGroup][id] = val;
+			if (val.find(',') != -1)
+			{
+				// color / vector
+				string token;
+				string delim = ",";
+				string s = val;
+
+				vector<float> values;
+				size_t pos = 0;
+				while ((pos = s.find(delim)) != string::npos)
+				{
+					token = s.substr(0, pos);
+					values.push_back(std::stof(token));
+					s.erase(0, pos + delim.length());
+				}
+
+				values.push_back(std::stof(s));
+
+				if (values.size() == 2)
+				{
+					m_vectorValues[lastGroup][id] = Vector2{ values[0], values[1] };
+				}
+				else if (values.size() == 4)
+				{
+					m_colorValues[lastGroup][id] = Color
+					{
+						(unsigned char)values[0],
+						(unsigned char)values[1],
+						(unsigned char)values[2],
+						(unsigned char)values[3]
+					};
+				}
+			}
+			else
+			{
+				if (val.find('.') != -1)
+				{
+					m_floatValues[lastGroup][id] = (float)atof(val.c_str());
+					continue;
+				}
+
+				if (val == "false" || val == "true")
+				{
+					m_boolValues[lastGroup][id] = val == "true";
+				}
+				else
+				{
+					int ascii = (int)val[0];
+					if (ascii >= 48 && ascii <= 57)
+					{
+						m_intValues[lastGroup][id] = atoi(val.c_str());
+					}
+					else
+					{
+						m_textValues[lastGroup][id] = val;
+					}
+				}
+			}
 		}
 	}
 

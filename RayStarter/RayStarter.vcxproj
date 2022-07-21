@@ -173,6 +173,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RayStarter\Application.cpp" />
+    <ClCompile Include="RayStarter\Maths\Circle.cpp" />
+    <ClCompile Include="RayStarter\Maths\Colour.cpp" />
+    <ClCompile Include="RayStarter\Maths\Hit.cpp" />
+    <ClCompile Include="RayStarter\Maths\Mat3.cpp" />
+    <ClCompile Include="RayStarter\Maths\Rect.cpp" />
+    <ClCompile Include="RayStarter\Maths\SceneObject.cpp" />
+    <ClCompile Include="RayStarter\Maths\Vec2.cpp" />
     <ClCompile Include="RayStarter\Utils\Assets.cpp" />
     <ClCompile Include="RayStarter\Utils\Config.cpp" />
     <ClCompile Include="RayStarter\GameObjects\GameObjectManager.cpp" />
@@ -183,6 +190,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RayStarter\Application.h" />
+    <ClInclude Include="RayStarter\Maths\Circle.h" />
+    <ClInclude Include="RayStarter\Maths\Colour.h" />
+    <ClInclude Include="RayStarter\Maths\Hit.h" />
+    <ClInclude Include="RayStarter\Maths\Mat3.h" />
+    <ClInclude Include="RayStarter\Maths\Rect.h" />
+    <ClInclude Include="RayStarter\Maths\SceneObject.h" />
+    <ClInclude Include="RayStarter\Maths\Vec2.h" />
     <ClInclude Include="RayStarter\Utils\Assets.h" />
     <ClInclude Include="RayStarter\Utils\Config.h" />
     <ClInclude Include="RayStarter\GameObjects\GameObjectManager.h" />

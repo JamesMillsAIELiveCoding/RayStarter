@@ -1,4 +1,4 @@
-#include "RayStarter/Application.h"
+#include <Application.h>
 
 int main()
 {

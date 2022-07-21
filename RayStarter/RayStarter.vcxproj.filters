@@ -13,36 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Utilities">
-      <UniqueIdentifier>{03751987-ca8c-4594-a1d4-e1f93a919235}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utilities">
-      <UniqueIdentifier>{96472aa7-1ba4-4f2a-ab91-d024f050b7ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameObjects">
-      <UniqueIdentifier>{488933d4-faa5-4a88-8af3-32a7eb97a4e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Physics">
-      <UniqueIdentifier>{db99e8fa-04bf-43d5-8b3d-4166a20e08ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameObjects">
-      <UniqueIdentifier>{6c45c011-e01d-4ebb-89ec-29fc3b3b2770}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Physics">
-      <UniqueIdentifier>{d86f541a-cbbc-4c0d-bad3-c629a225c381}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameStates">
-      <UniqueIdentifier>{be94a958-0653-478f-ba4f-89d620408e14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameStates">
-      <UniqueIdentifier>{abcdff8f-b897-4b19-9d2a-a1e6f55159b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Debugging">
-      <UniqueIdentifier>{789285ad-c0c6-4ee9-b854-2b0facef6b14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Debugging">
-      <UniqueIdentifier>{398ec3d4-cc06-487f-9d88-51262cbf4909}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Textures">
       <UniqueIdentifier>{7ec56a22-32fa-4a6a-b232-cdcdfd48bf89}</UniqueIdentifier>
     </Filter>
@@ -52,69 +22,108 @@
     <Filter Include="Resource Files\Fonts">
       <UniqueIdentifier>{37707347-a9f7-4b7d-a49f-22d87172d415}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\RayStarter">
+      <UniqueIdentifier>{3ef40d75-4002-407b-9585-cbafd6aea409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayStarter\Utilities">
+      <UniqueIdentifier>{03751987-ca8c-4594-a1d4-e1f93a919235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayStarter\Physics">
+      <UniqueIdentifier>{d86f541a-cbbc-4c0d-bad3-c629a225c381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayStarter\GameStates">
+      <UniqueIdentifier>{be94a958-0653-478f-ba4f-89d620408e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayStarter\Debugging">
+      <UniqueIdentifier>{789285ad-c0c6-4ee9-b854-2b0facef6b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayStarter\GameObjects">
+      <UniqueIdentifier>{6c45c011-e01d-4ebb-89ec-29fc3b3b2770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter">
+      <UniqueIdentifier>{d8a0c4cd-7d80-4986-9d9b-1d6819c38674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter\Debugging">
+      <UniqueIdentifier>{398ec3d4-cc06-487f-9d88-51262cbf4909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter\GameObjects">
+      <UniqueIdentifier>{488933d4-faa5-4a88-8af3-32a7eb97a4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter\GameStates">
+      <UniqueIdentifier>{abcdff8f-b897-4b19-9d2a-a1e6f55159b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter\Physics">
+      <UniqueIdentifier>{db99e8fa-04bf-43d5-8b3d-4166a20e08ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayStarter\Utilities">
+      <UniqueIdentifier>{96472aa7-1ba4-4f2a-ab91-d024f050b7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images">
+      <UniqueIdentifier>{36042895-e442-4ba1-b4fd-c05be72a512c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RayStarter\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\Utils\Assets.cpp">
-      <Filter>Source Files\Utilities</Filter>
+      <Filter>Source Files\RayStarter\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\Utils\Config.cpp">
-      <Filter>Source Files\Utilities</Filter>
+      <Filter>Source Files\RayStarter\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\Physics\PhysicsManager.cpp">
-      <Filter>Source Files\Physics</Filter>
+      <Filter>Source Files\RayStarter\Physics</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\GameObjects\GameObjectManager.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\RayStarter\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\GameStates\GameStateManager.cpp">
-      <Filter>Source Files\GameStates</Filter>
+      <Filter>Source Files\RayStarter\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\GameObjects\IGameObject.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\RayStarter\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="RayStarter\Utils\Gizmos.cpp">
-      <Filter>Source Files\Debugging</Filter>
+      <Filter>Source Files\RayStarter\Debugging</Filter>
+    </ClCompile>
+    <ClCompile Include="RayStarter\Application.cpp">
+      <Filter>Source Files\RayStarter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RayStarter\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RayStarter\Physics\Ray2D.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\RayStarter\Physics</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Physics\PhysicsManager.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\RayStarter\Physics</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Physics\ICollider.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\RayStarter\Physics</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Utils\Gizmos.h">
-      <Filter>Header Files\Debugging</Filter>
+      <Filter>Header Files\RayStarter\Debugging</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\GameObjects\IGameObject.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\RayStarter\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\GameObjects\GameObjectManager.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\RayStarter\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Utils\Config.h">
-      <Filter>Header Files\Utilities</Filter>
+      <Filter>Header Files\RayStarter\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\Utils\Assets.h">
-      <Filter>Header Files\Utilities</Filter>
+      <Filter>Header Files\RayStarter\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\GameStates\GameStateManager.h">
-      <Filter>Header Files\GameStates</Filter>
+      <Filter>Header Files\RayStarter\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="RayStarter\GameStates\IGameState.h">
-      <Filter>Header Files\GameStates</Filter>
+      <Filter>Header Files\RayStarter\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RayStarter\Application.h">
+      <Filter>Header Files\RayStarter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

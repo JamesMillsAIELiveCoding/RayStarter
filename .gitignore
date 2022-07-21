@@ -1,6 +1,6 @@
 
 .vs/
-RaylibStarterCS/obj/
+.idea/
+bin/
 **/Debug/
 **/Release/
-!Raylib/

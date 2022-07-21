@@ -45,8 +45,6 @@ struct Mat3
     Vec2 TransformPoint(Vec2 _point) const;
     Vec2 TransformVector(Vec2 _vector) const;
 
-    Mat3 operator *(Mat3 _lhs, Mat3 _rhs) const;
-
     static Mat3 CreateTranslation(float _transX, float _transY);
     static Mat3 CreateTranslation(Vec2 _trans);
 
@@ -58,3 +56,5 @@ struct Mat3
     static Mat3 CreateScale(Vec2 _scale);
     
 };
+
+extern Mat3 operator *(Mat3 _lhs, Mat3 _rhs);

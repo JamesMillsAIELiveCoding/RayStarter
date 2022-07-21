@@ -39,9 +39,7 @@ Hit Circle::Intersects(const Vec2 _point)
     if(dist > radius)
         return {};
 
-    Vec2 offset = Vec2::Normalized(_point - Position());
-    offset *= radius;
-    const Vec2 closestPoint = Position() + offset;
+    const Vec2 closestPoint = Position() + Vec2::Normalized(_point - Position()) * radius;
     const Vec2 delta = closestPoint - _point;
     return {closestPoint, delta, Vec2::Normalized(delta)};
 }
@@ -52,11 +50,9 @@ Hit Circle::Intersects(Circle _circle)
     if(dist > radius)
         return {};
 
-    Vec2 offset = Vec2::Normalized(_circle.Position() - Position());
-    offset *= radius;
-    const Vec2 closestPoint = Position() + offset;
+    const Vec2 offset = Vec2::Normalized(_circle.Position() - Position());
+    const Vec2 closestPoint = Position() + offset * radius;
     const float overlapLength = radius + _circle.radius - dist;
-    Vec2 delta = offset;
-    delta *= overlapLength;
+    Vec2 delta = offset * overlapLength;
     return {closestPoint, delta, Vec2::Normalized(delta)};
 }

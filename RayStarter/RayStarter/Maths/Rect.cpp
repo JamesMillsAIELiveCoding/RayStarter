@@ -93,7 +93,7 @@ Hit Rect::Intersects(const Vec2 _point)
 Hit Rect::Intersects(Rect _rect)
 {
     const Vec2 vec = _rect.Position() - Position();
-    const Vec2 overlap = _rect.Size() + Size() - new Vec2(fabsf(vec.x), fabsf(vec.y));
+    const Vec2 overlap = _rect.Size() + Size() - Vec2(fabsf(vec.x), fabsf(vec.y));
 
     if(overlap.x <= 0 || overlap.y <= 0)
         return {};

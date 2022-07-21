@@ -19,7 +19,7 @@ public:
 	static void Update(float _dt);
 	static void Draw();
 
-	static void SetState(const char* _name, IGameState* state);
+	static void SetState(const char* _name, IGameState* _state);
 	static void PushState(const char* _name);
 	static void PopState();
 	static void CreateInstance() { m_instance = new GameStateManager(); }

@@ -15,8 +15,6 @@ void SceneObject::Update(float _dt)
 {
     OnUpdate(_dt);
 
-    position = transform.GetTranslation();
-
     if(!isAlive)
         SetParent(nullptr);
 
@@ -85,4 +83,19 @@ Mat3 SceneObject::GlobalTransform()
         return transform;
 
     return transform * parent->transform;
+}
+
+Vec2 SceneObject::Position()
+{
+    return GlobalTransform().GetTranslation();
+}
+
+Vec2 SceneObject::Scale()
+{
+    return GlobalTransform().GetScale();
+}
+
+float SceneObject::Rotation()
+{
+    return GlobalTransform().GetRotationZ() * (180 / PI);
 }

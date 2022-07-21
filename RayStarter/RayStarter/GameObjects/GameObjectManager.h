@@ -18,12 +18,12 @@ public:
 	static void CreateInstance() { m_instance = new GameObjectManager(); }
 	static void DestroyInstance() 
 	{
-		m_instance->Clear();
+		Clear();
 		delete m_instance; 
 	}
 
 private:
-	GameObjectManager() {};
+	GameObjectManager() = default;
 	GameObjectManager(const GameObjectManager&) = delete;
 	list<IGameObject*> m_objects;
 	static GameObjectManager* m_instance;

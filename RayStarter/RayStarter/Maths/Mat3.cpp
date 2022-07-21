@@ -155,23 +155,6 @@ Vec2 Mat3::TransformVector(const Vec2 _vector) const
     };
 }
 
-Mat3 Mat3::operator*(const Mat3 _lhs, const Mat3 _rhs) const
-{
-    return {
-        _lhs.m11 * _rhs.m11 + _lhs.m21 * _rhs.m12 + _lhs.m31 * _rhs.m13,
-        _lhs.m12 * _rhs.m11 + _lhs.m22 * _rhs.m12 + _lhs.m23 * _rhs.m13,
-        _lhs.m13 * _rhs.m11 + _lhs.m23 * _rhs.m12 + _lhs.m33 * _rhs.m13,
-                                                           
-        _lhs.m11 * _rhs.m21 + _lhs.m21 * _rhs.m22 + _lhs.m31 * _rhs.m23,
-        _lhs.m12 * _rhs.m21 + _lhs.m22 * _rhs.m22 + _lhs.m23 * _rhs.m23,
-        _lhs.m13 * _rhs.m21 + _lhs.m23 * _rhs.m22 + _lhs.m33 * _rhs.m23,
-         
-        _lhs.m11 * _rhs.m31 + _lhs.m21 * _rhs.m32 + _lhs.m31 * _rhs.m33,
-        _lhs.m12 * _rhs.m31 + _lhs.m22 * _rhs.m32 + _lhs.m23 * _rhs.m33,
-        _lhs.m13 * _rhs.m31 + _lhs.m23 * _rhs.m32 + _lhs.m33 * _rhs.m33
-    };
-}
-
 Mat3 Mat3::CreateTranslation(float _transX, float _transY)
 {
     return {
@@ -234,4 +217,21 @@ Mat3 Mat3::CreateScale(float _scaleX, float _scaleY)
 Mat3 Mat3::CreateScale(const Vec2 _scale)
 {
     return CreateScale(_scale.x, _scale.y);
+}
+
+Mat3 operator*(const Mat3 _lhs, const Mat3 _rhs)
+{
+    return {
+        _lhs.m11 * _rhs.m11 + _lhs.m21 * _rhs.m12 + _lhs.m31 * _rhs.m13,
+        _lhs.m12 * _rhs.m11 + _lhs.m22 * _rhs.m12 + _lhs.m23 * _rhs.m13,
+        _lhs.m13 * _rhs.m11 + _lhs.m23 * _rhs.m12 + _lhs.m33 * _rhs.m13,
+                                                           
+        _lhs.m11 * _rhs.m21 + _lhs.m21 * _rhs.m22 + _lhs.m31 * _rhs.m23,
+        _lhs.m12 * _rhs.m21 + _lhs.m22 * _rhs.m22 + _lhs.m23 * _rhs.m23,
+        _lhs.m13 * _rhs.m21 + _lhs.m23 * _rhs.m22 + _lhs.m33 * _rhs.m23,
+         
+        _lhs.m11 * _rhs.m31 + _lhs.m21 * _rhs.m32 + _lhs.m31 * _rhs.m33,
+        _lhs.m12 * _rhs.m31 + _lhs.m22 * _rhs.m32 + _lhs.m23 * _rhs.m33,
+        _lhs.m13 * _rhs.m31 + _lhs.m23 * _rhs.m32 + _lhs.m33 * _rhs.m33
+    };
 }

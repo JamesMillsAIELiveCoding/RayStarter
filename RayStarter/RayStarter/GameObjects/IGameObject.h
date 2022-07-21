@@ -5,15 +5,15 @@
 
 #include <cmath>
 
+#include "Maths/Vec2.h"
+#include "Maths/Colour.h"
+#include "Maths/SceneObject.h"
+
 class ICollider;
 
-class IGameObject
+class IGameObject : public SceneObject
 {
 public:
-	virtual void Start() {}
-	virtual void Update(float _dt) {}
-	virtual void Draw() {}
-	virtual void OnDestroy() {}
 	virtual void OnReconfigure() {}
 
 	virtual void PhysicsUpdate(float _dt);
@@ -21,26 +21,21 @@ public:
 
 	virtual void DrawGizmos();
 
-	Vector2 position;
-	Vector2 size;
-	Color color;
-	float rotation;
+	Colour color;
 
-	Vector2 GetForward();
-	Vector2 GetRight();
+	Vec2 GetForward();
+	Vec2 GetRight();
 
 	Texture2D GetTexture() const;
 	ICollider* GetCollider() const;
 
-	virtual ~IGameObject();
+	~IGameObject() override;
 
 protected:
 	IGameObject() :
-		position(Vector2()), size(Vector2()), color(RAYWHITE), 
-		m_texture(), m_collider(nullptr), rotation(0)
+		color(Colour::white),  m_texture(), m_collider(nullptr)
 	{
 	}
-
 	void SetCollider(ICollider* _collider);
 
 	Texture2D m_texture;

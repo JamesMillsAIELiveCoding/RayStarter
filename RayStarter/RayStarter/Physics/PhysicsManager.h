@@ -16,9 +16,9 @@ public:
 	static void DestroyInstance() { delete m_instance; }
 
 private:
-	PhysicsManager() {}
+	PhysicsManager() = default;
 	PhysicsManager(const PhysicsManager&) = delete;
-	~PhysicsManager() {}
+	~PhysicsManager() = default;
 
 	list<ICollider*> m_colliders;
 	static PhysicsManager* m_instance;

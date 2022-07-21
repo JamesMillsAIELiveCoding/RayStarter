@@ -44,79 +44,24 @@ Vec2::operator Vector2() const
     return {x, y};
 }
 
-Vec2 Vec2::operator-(const Vec2& _lhs) const
-{
-    return Vec2{-_lhs.x, -_lhs.y};
-}
-
-bool Vec2::operator==(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x == _rhs.x && _lhs.y == _rhs.y;
-}
-
-bool Vec2::operator!=(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x != _rhs.x || _lhs.y != _rhs.y;
-}
-
-bool Vec2::operator>(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x + _lhs.y > _rhs.x + _rhs.y;
-}
-
-bool Vec2::operator<(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x + _lhs.y > _rhs.x + _rhs.y;
-}
-
-bool Vec2::operator>=(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x + _lhs.y >= _rhs.x + _rhs.y;
-}
-
-bool Vec2::operator<=(const Vec2& _lhs, const Vec2& _rhs) const
-{
-    return _lhs.x + _lhs.y <= _rhs.x + _rhs.y;
-}
-
-Vec2 Vec2::operator+(const Vec2& _lhs, const Vec2& _rhs) const
+Vec2 operator+(const Vec2& _lhs, const Vec2& _rhs)
 {
     return {_lhs.x + _rhs.x, _lhs.y + _rhs.y};
 }
 
-Vec2 Vec2::operator-(const Vec2& _lhs, const Vec2& _rhs) const
+Vec2 operator-(const Vec2& _lhs, const Vec2& _rhs)
 {
     return {_lhs.x - _rhs.x, _lhs.y - _rhs.y};
 }
 
-Vec2 Vec2::operator*(const Vec2& _lhs, const Vec2& _rhs) const
+Vec2 operator*(const Vec2& _lhs, const Vec2& _rhs)
 {
     return {_lhs.x * _rhs.x, _lhs.y * _rhs.y};
 }
 
-Vec2 Vec2::operator*(const Vec2& _lhs, const float& _rhs) const
+Vec2 operator*(const Vec2& _lhs, const float& _rhs)
 {
     return {_lhs.x * _rhs, _lhs.y * _rhs};
-}
-
-Vec2 Vec2::operator+=(const Vec2& _rhs) const
-{
-    return {x + _rhs.x, y + _rhs.y};
-}
-
-Vec2 Vec2::operator-=(const Vec2& _rhs) const
-{
-    return {x - _rhs.x, y - _rhs.y};
-}
-
-Vec2 Vec2::operator*=(const Vec2& _rhs)
-{
-    return {x * _rhs.x, y * _rhs.y};
-}
-
-Vec2 Vec2::operator*=(const float& _rhs)
-{
-    return {x * _rhs, y * _rhs};
 }
 
 Vec2 Vec2::Normalized(const Vec2& _toNormalize)
@@ -137,3 +82,45 @@ float Vec2::Dot(const Vec2& _lhs, const Vec2& _rhs)
     return _lhs.x * _rhs.x + _lhs.y * _rhs.y;
 }
 
+Vec2 Vec2::Rotate(const Vec2& _vec, const float& _amount)
+{
+    float xRotated = _vec.x * cosf(_amount) - _vec.y * sinf(_amount);
+    float yRotated = _vec.x * sinf(_amount) + _vec.y * cosf(_amount);
+
+    return {xRotated, yRotated};
+}
+
+Vec2 operator-(const Vec2& _lhs)
+{
+    return Vec2{-_lhs.x, -_lhs.y};
+}
+
+bool operator==(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x == _rhs.x && _lhs.y == _rhs.y;
+}
+
+bool operator!=(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x != _rhs.x || _lhs.y != _rhs.y;
+}
+
+bool operator>(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x + _lhs.y > _rhs.x + _rhs.y;
+}
+
+bool operator<(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x + _lhs.y > _rhs.x + _rhs.y;
+}
+
+bool operator>=(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x + _lhs.y >= _rhs.x + _rhs.y;
+}
+
+bool operator<=(const Vec2& _lhs, const Vec2& _rhs)
+{
+    return _lhs.x + _lhs.y <= _rhs.x + _rhs.y;
+}

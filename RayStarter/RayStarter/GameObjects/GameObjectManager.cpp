@@ -21,25 +21,25 @@ void GameObjectManager::DestroyObject(IGameObject* _toDestroy)
 
 void GameObjectManager::ReconfigureObjects()
 {
-	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)
+	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); ++iter)
 		(*iter)->OnReconfigure();
 }
 
 void GameObjectManager::Update(float _dt)
 {
-	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)
+	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); ++iter)
 		(*iter)->Update(_dt);
 }
 
 void GameObjectManager::UpdatePhysics(float _dt)
 {
-	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)
+	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); ++iter)
 		(*iter)->PhysicsUpdate(_dt);
 }
 
 void GameObjectManager::Draw()
 {
-	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); iter++)
+	for (auto iter = m_instance->m_objects.begin(); iter != m_instance->m_objects.end(); ++iter)
 	{
 		IGameObject* obj = *iter;
 		obj->Draw();

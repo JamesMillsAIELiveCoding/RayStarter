@@ -26,29 +26,11 @@ typedef struct Vec2
     void Normalize();
 
     operator Vector2() const;
-    Vec2 operator -(const Vec2& _lhs) const;
-    
-    bool operator ==(const Vec2& _lhs, const Vec2& _rhs) const;
-    bool operator !=(const Vec2& _lhs, const Vec2& _rhs) const;
-    
-    bool operator >(const Vec2& _lhs, const Vec2& _rhs) const;
-    bool operator <(const Vec2& _lhs, const Vec2& _rhs) const;
-    bool operator >=(const Vec2& _lhs, const Vec2& _rhs) const;
-    bool operator <=(const Vec2& _lhs, const Vec2& _rhs) const;
-    
-    Vec2 operator +(const Vec2& _lhs, const Vec2& _rhs) const;
-    Vec2 operator -(const Vec2& _lhs, const Vec2& _rhs) const;
-    Vec2 operator *(const Vec2& _lhs, const Vec2& _rhs) const;
-    Vec2 operator *(const Vec2& _lhs, const float& _rhs) const;
-    
-    Vec2 operator +=(const Vec2& _rhs) const;
-    Vec2 operator -=(const Vec2& _rhs) const;
-    Vec2 operator *=(const Vec2& _rhs);
-    Vec2 operator *=(const float& _rhs);
 
     static Vec2 Normalized(const Vec2& _toNormalize);
     static float Distance(const Vec2& _lhs, const Vec2& _rhs);
     static float Dot(const Vec2& _lhs, const Vec2& _rhs);
+    static Vec2 Rotate(const Vec2& _vec, const float& _amount);
 
     static Vec2 zero;
     static Vec2 one;
@@ -58,3 +40,18 @@ typedef struct Vec2
     static Vec2 left;
     
 } Vec2;
+
+extern Vec2 operator -(const Vec2& _lhs);
+    
+extern bool operator ==(const Vec2& _lhs, const Vec2& _rhs);
+extern bool operator !=(const Vec2& _lhs, const Vec2& _rhs);
+    
+extern bool operator >(const Vec2& _lhs, const Vec2& _rhs);
+extern bool operator <(const Vec2& _lhs, const Vec2& _rhs);
+extern bool operator >=(const Vec2& _lhs, const Vec2& _rhs);
+extern bool operator <=(const Vec2& _lhs, const Vec2& _rhs);
+    
+extern Vec2 operator +(const Vec2& _lhs, const Vec2& _rhs);
+extern Vec2 operator -(const Vec2& _lhs, const Vec2& _rhs);
+extern Vec2 operator *(const Vec2& _lhs, const Vec2& _rhs);
+extern Vec2 operator *(const Vec2& _lhs, const float& _rhs);

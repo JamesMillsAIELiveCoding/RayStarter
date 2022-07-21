@@ -26,14 +26,6 @@ typedef struct Colour
 
 	operator Color() const;
 	
-	bool operator ==(const Colour& _lhs, const Colour& _rhs) const;
-	bool operator !=(const Colour& _lhs, const Colour& _rhs) const;
-	
-	bool operator >(const Colour& _lhs, const Colour& _rhs) const;
-	bool operator <(const Colour& _lhs, const Colour& _rhs) const;
-	bool operator >=(const Colour& _lhs, const Colour& _rhs) const;
-	bool operator <=(const Colour& _lhs, const Colour& _rhs) const;
-	
 	static Colour clear;
 	static Colour white;
 	static Colour black;
@@ -44,3 +36,11 @@ typedef struct Colour
 	static Colour FromHex(const char* _hex);
 
 } Colour;
+
+extern bool operator ==(const Colour& _lhs, const Colour& _rhs);
+extern bool operator !=(const Colour& _lhs, const Colour& _rhs);
+	
+extern bool operator >(const Colour& _lhs, const Colour& _rhs);
+extern bool operator <(const Colour& _lhs, const Colour& _rhs);
+extern bool operator >=(const Colour& _lhs, const Colour& _rhs);
+extern bool operator <=(const Colour& _lhs, const Colour& _rhs);

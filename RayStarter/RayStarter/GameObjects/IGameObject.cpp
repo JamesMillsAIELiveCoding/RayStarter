@@ -15,26 +15,26 @@ void IGameObject::DrawGizmos()
 {
 	if (Gizmos::drawGizmos)
 	{
-		Ray2D ray = Ray2D(position, GetForward(), 25.0f);
-		Gizmos::DrawRay(ray, BLUE);
+		Ray2D ray = Ray2D(Position(), GetForward(), 25.0f);
+		Gizmos::DrawRay(ray, Colour::blue);
 		ray.direction = GetRight();
-		Gizmos::DrawRay(ray, RED);
+		Gizmos::DrawRay(ray, Colour::red);
 
 		if (m_collider != nullptr)
 			m_collider->DrawGizmos();
 	}
 }
 
-Vector2 IGameObject::GetForward()
+Vec2 IGameObject::GetForward()
 {
-	float radians = rotation * PI / 180;
-	return Vector2{ cos(radians), sin(radians) };
+	const float radians = Rotation() * PI / 180;
+	return Vec2{ cos(radians), sin(radians) };
 }
 
-Vector2 IGameObject::GetRight()
+Vec2 IGameObject::GetRight()
 {
-	Vector2 forward = GetForward();
-	return Vector2Rotate(forward, 90);
+	const Vec2 forward = GetForward();
+	return Vec2::Rotate(forward, 90);
 }
 
 Texture2D IGameObject::GetTexture() const 

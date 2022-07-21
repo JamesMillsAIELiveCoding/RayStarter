@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <GameObjects/IGameObject.h>
-
 #include <functional>
 #include <list>
 
@@ -10,22 +8,25 @@
 using std::function;
 using std::list;
 
-class SceneObject : public IGameObject
+class SceneObject
 {
 public:
     SceneObject();
-    ~SceneObject() override;
+    virtual ~SceneObject();
 
-    void Start() final;
-    void Update(float _dt) final;
-    void Draw() final;
-    void OnDestroy() final;
+    void Start();
+    void Update(float _dt);
+    void Draw();
+    void OnDestroy();
 
     void AddChild(SceneObject* _child);
     void RemoveChild(SceneObject* _child);
     void SetParent(SceneObject* _newParent);
     
     Mat3 GlobalTransform();
+    Vec2 Position();
+    Vec2 Scale();
+    float Rotation();
 
     SceneObject* parent;
     list<SceneObject*> children;

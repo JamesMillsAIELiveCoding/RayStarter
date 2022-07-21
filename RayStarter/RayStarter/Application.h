@@ -1,11 +1,11 @@
 #pragma once
-
-#include <raylib.h>
+#include "Maths/Colour.h"
 
 class Application
 {
 public:
 	Application();
+	virtual ~Application() = default;
 
 	void Run();
 
@@ -30,7 +30,7 @@ private:
 	void Configure(bool _isReconfigure = false);
 	void SwapFullscreenMode();
 
-	Color m_clearColor;
+	Colour m_clearColor;
 	int m_debugKey;
 	int m_configReloadKey;
 	int m_fullscreenKey;

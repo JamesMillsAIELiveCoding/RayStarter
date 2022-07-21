@@ -5,6 +5,8 @@
 class ICollider
 {
 public:
+	virtual ~ICollider() = default;
+
 	virtual void OnCollision(ICollider* _other) 
 	{
 		_other->GetOwner()->OnCollision(m_owner);

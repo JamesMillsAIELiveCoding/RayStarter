@@ -10,7 +10,7 @@ using std::vector;
 
 Config* Config::m_instance = nullptr;
 
-Config::Config(string _filePath)
+Config::Config(const string& _filePath)
 {
 	m_filePath = _filePath;
 	Load(m_filePath);
@@ -28,7 +28,7 @@ void Config::Reload()
 	m_instance->Load(m_instance->m_filePath);
 }
 
-int Config::GetIntValue(string _group, string _id)
+int Config::GetIntValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_intValues.find(_group) != m_instance->m_intValues.end())
 	{
@@ -43,7 +43,7 @@ int Config::GetIntValue(string _group, string _id)
 	return 0;
 }
 
-bool Config::GetBooleanValue(string _group, string _id)
+bool Config::GetBooleanValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_boolValues.find(_group) != m_instance->m_boolValues.end())
 	{
@@ -58,7 +58,7 @@ bool Config::GetBooleanValue(string _group, string _id)
 	return false;
 }
 
-float Config::GetFloatValue(string _group, string _id)
+float Config::GetFloatValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_floatValues.find(_group) != m_instance->m_floatValues.end())
 	{
@@ -73,7 +73,7 @@ float Config::GetFloatValue(string _group, string _id)
 	return 0;
 }
 
-Vector2 Config::GetVectorValue(string _group, string _id)
+Vec2 Config::GetVectorValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_vectorValues.find(_group) != m_instance->m_vectorValues.end())
 	{
@@ -85,10 +85,10 @@ Vector2 Config::GetVectorValue(string _group, string _id)
 		}
 	}
 
-	return Vector2{};
+	return {};
 }
 
-Color Config::GetColorValue(string _group, string _id)
+Colour Config::GetColorValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_colorValues.find(_group) != m_instance->m_colorValues.end())
 	{
@@ -100,10 +100,10 @@ Color Config::GetColorValue(string _group, string _id)
 		}
 	}
 
-	return Color();
+	return Colour::clear;
 }
 
-const char* Config::GetTextValue(string _group, string _id)
+const char* Config::GetTextValue(const string& _group, const string& _id)
 {
 	if (m_instance->m_textValues.find(_group) != m_instance->m_textValues.end())
 	{
@@ -115,10 +115,10 @@ const char* Config::GetTextValue(string _group, string _id)
 		}
 	}
 
-	return 0;
+	return nullptr;
 }
 
-void Config::Load(string _filePath)
+void Config::Load(const string& _filePath)
 {
 	ifstream configFile("assets\\" + _filePath);
 	if (configFile.bad())
@@ -148,7 +148,7 @@ void Config::Load(string _filePath)
 			std::string val = line;
 			val.erase(0, index + 1);
 
-			if (val.find(',') != -1)
+			if (val.find(',') != static_cast<size_t>(-1))
 			{
 				// color / vector
 				string token;
@@ -168,11 +168,11 @@ void Config::Load(string _filePath)
 
 				if (values.size() == 2)
 				{
-					m_vectorValues[lastGroup][id] = Vector2{ values[0], values[1] };
+					m_vectorValues[lastGroup][id] = { values[0], values[1] };
 				}
 				else if (values.size() == 4)
 				{
-					m_colorValues[lastGroup][id] = Color
+					m_colorValues[lastGroup][id] =
 					{
 						(unsigned char)values[0],
 						(unsigned char)values[1],
@@ -183,9 +183,9 @@ void Config::Load(string _filePath)
 			}
 			else
 			{
-				if (val.find('.') != -1)
+				if (val.find('.') != static_cast<size_t>(-1))
 				{
-					m_floatValues[lastGroup][id] = (float)atof(val.c_str());
+					m_floatValues[lastGroup][id] = stof(val);
 					continue;
 				}
 
@@ -198,7 +198,7 @@ void Config::Load(string _filePath)
 					int ascii = (int)val[0];
 					if (ascii >= 48 && ascii <= 57)
 					{
-						m_intValues[lastGroup][id] = atoi(val.c_str());
+						m_intValues[lastGroup][id] = stoi(val);
 					}
 					else
 					{

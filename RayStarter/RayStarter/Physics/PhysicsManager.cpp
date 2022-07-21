@@ -17,11 +17,11 @@ void PhysicsManager::Update(float _dt)
 {
 	GameObjectManager::UpdatePhysics(_dt);
 
-	for (auto iter = m_instance->m_colliders.begin(); iter != m_instance->m_colliders.end(); iter++)
+	for (auto iter = m_instance->m_colliders.begin(); iter != m_instance->m_colliders.end(); ++iter)
 	{
 		ICollider* collider = *iter;
 
-		for (auto otherIter = m_instance->m_colliders.begin(); otherIter != m_instance->m_colliders.end(); otherIter++)
+		for (auto otherIter = m_instance->m_colliders.begin(); otherIter != m_instance->m_colliders.end(); ++otherIter)
 		{
 			ICollider* other = *otherIter;
 			if (collider == other)
